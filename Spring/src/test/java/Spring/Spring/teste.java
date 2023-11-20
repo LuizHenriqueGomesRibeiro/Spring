@@ -19,11 +19,11 @@ public class teste {
 	@Test
 	public void insert() {
 		Usuario usuario = new Usuario();
-		usuario.setEmail("Bruna@hotmail.com");
-		usuario.setIdade(29);
-		usuario.setNome("Bruna");
+		usuario.setEmail("Luiz@hotmail.com");
+		usuario.setIdade(22);
+		usuario.setNome("Luiz");
 		usuario.setSenha("senha");
-		usuario.setLogin("Bruna");
+		usuario.setLogin("Luiz");
 		interfaceUsuario.save(usuario);
 	}
 	
@@ -35,6 +35,7 @@ public class teste {
 	@Test
 	public void list() {
 		for(Usuario usuario : interfaceUsuario.findAll()) {
+			System.out.println(usuario);
 		}
 	}
 	
@@ -48,5 +49,12 @@ public class teste {
 	@Test
 	public void delete() {
 		interfaceUsuario.deleteById(1L);
+	}
+	
+	@Test 
+	public void askName() {
+		for(Usuario usuario : interfaceUsuario.buscaPorNome("Bruna")) {
+			System.out.println(usuario);
+		}
 	}
 }
