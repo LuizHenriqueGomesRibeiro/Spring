@@ -14,5 +14,5 @@ public interface InterfaceUsuario extends CrudRepository<Usuario, Long> {
 	
 	@Transactional(readOnly = true)
 	@Query(value = "SELECT p FROM usuarios p WHERE p.nome LIKE %?1%")
-	public List<Usuario> buscaPorNome(String nome);
+	public List<Usuario> buscarPorNome(String nome);
 }

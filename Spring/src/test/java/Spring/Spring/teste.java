@@ -2,18 +2,18 @@ package Spring.Spring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import Spring.Spring.DAO.InterfaceUsuario;
 import Spring.Spring.Model.Usuario;
 
+@ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:META-INF/spring-config.xml"})
 public class teste {
 	
-	@Autowired
 	private InterfaceUsuario interfaceUsuario;
 	
 	@Test
@@ -53,7 +53,7 @@ public class teste {
 	
 	@Test 
 	public void askName() {
-		for(Usuario usuario : interfaceUsuario.buscaPorNome("Bruna")) {
+		for(Usuario usuario : interfaceUsuario.buscarPorNome("Bruna")) {
 			System.out.println(usuario);
 		}
 	}
