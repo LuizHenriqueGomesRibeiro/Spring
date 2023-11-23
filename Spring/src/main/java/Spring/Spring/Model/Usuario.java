@@ -1,10 +1,16 @@
 package Spring.Spring.Model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 @Entity
 @Table(name = "usuarios")
@@ -18,6 +24,17 @@ public class Usuario {
 	private String email;
 	private String nome;
 	private int idade;
+	
+	@OneToMany(mappedBy = "usuario", orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Telefone> telefones;
+	
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+	
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
 	
 	public Long getId() {
 		return id;
